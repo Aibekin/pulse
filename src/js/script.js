@@ -32,4 +32,20 @@ $(document).ready(function(){
 
     toggleSlide('.catalog-item__link');
     toggleSlide('.catalog-item__back');
+
+    // Modal
+
+    $('[data-modal=consultaition]').on('click', function() {
+        $('.overlay, #consultaition').fadeIn('slow');
+    });
+    $('.modal__close').on('click', function() {
+        $('.overlay, .modal').fadeOut('slow');
+    });
+
+    $('.button_mini').each(function(i) {
+        $(this).on('click', function() {
+            $('.overlay, #order').fadeIn('slow');
+            $('#order .modal__subtitle').text($('.catalog-item__subtitle').eq(i).text());
+        });
+    });
 });
