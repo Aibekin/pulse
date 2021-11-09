@@ -48,4 +48,37 @@ $(document).ready(function(){
             $('#order .modal__subtitle').text($('.catalog-item__subtitle').eq(i).text());
         });
     });
+
+    function validateForms(form) {
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Пожалуйста, введите своё имя",
+                    minlength: jQuery.validator.format("Введите {0} символов!")
+                },
+                phone: "Пожалуйста, введите свой номер телефона",
+                email: {
+                    required: "Пожалуйста, введите свою почту",
+                    email: "Неправильно введен почтовый адрес!"
+                }
+            }
+        });
+    };
+
+    validateForms('#consultaition-form')
+    validateForms('#consultaition form')
+    validateForms('#order form')
+
+    $('input[name=phone]').mask("+7 (999) 999-99-99");
 });
